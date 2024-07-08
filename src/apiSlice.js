@@ -65,6 +65,21 @@ export const api = createApi({
         method: "DELETE",
       }),
       invalidatesTags: ["Tasks"],
+      // ^ optimistic updated code....
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          api.util.updateQueryData("getTasks", undefined, (tasksList) => {
+            const taskIndex = tasksList.findIndex((el) => el.id === id);
+            tasksList.splice(taskIndex, 1);
+          })
+        );
+
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
     }),
   }),
 });
