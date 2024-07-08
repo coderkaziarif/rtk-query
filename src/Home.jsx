@@ -1,26 +1,20 @@
 import { useState } from "react";
 import Task from "./TaskItem";
 import { Link } from "react-router-dom";
-import { useAddTaskMutation, useGetTasksQuery } from "./apiSlice";
+import {
+  useAddTaskMutation,
+  useGetTasksQuery,
+  useUpdateTaskMutation,
+} from "./apiSlice";
 
 export default function Home() {
   const [newTask, setNewTask] = useState("");
-
-  const BASE_URL = "http://localhost:3000";
 
   const { data: tasksList, isLoading, isError, error } = useGetTasksQuery();
 
   const [addTask] = useAddTaskMutation();
 
-  const updateTask = async ({ id, ...updatedTask }) => {
-    await fetch(`${BASE_URL}/tasks/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedTask),
-    });
-  };
+  const [updateTask] = useUpdateTaskMutation();
 
   const deleteTask = async (id) => {
     await fetch(`${BASE_URL}/tasks/${id}`, {

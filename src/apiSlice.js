@@ -30,4 +30,5 @@ export const api = createApi({
   }),
 });
 
-export const { useGetTasksQuery, useAddTaskMutation } = api;
+export const { useGetTasksQuery, useAddTaskMutation, useUpdateTaskMutation } =
+  api;
