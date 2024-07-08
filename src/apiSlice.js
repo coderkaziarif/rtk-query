@@ -19,6 +19,14 @@ export const api = createApi({
       }),
       invalidatesTags: ["Tasks"],
     }),
+    updateTask: builder.mutation({
+      query: ({ id, ...updatedTask }) => ({
+        url: `/tasks/${id}`,
+        method: "PATCH",
+        body: updatedTask,
+      }),
+      invalidatesTags: ["Tasks"],
+    }),
   }),
 });
 
