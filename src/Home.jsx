@@ -10,6 +10,8 @@ import {
 export default function Home() {
   const [newTask, setNewTask] = useState("");
 
+  const BASE_URL = "http://localhost:3000";
+
   const { data: tasksList, isLoading, isError, error } = useGetTasksQuery();
 
   const [addTask] = useAddTaskMutation();
