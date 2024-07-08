@@ -3,6 +3,7 @@ import Task from "./TaskItem";
 import { Link } from "react-router-dom";
 import {
   useAddTaskMutation,
+  useDeleteTaskMutation,
   useGetTasksQuery,
   useUpdateTaskMutation,
 } from "./apiSlice";
@@ -10,19 +11,11 @@ import {
 export default function Home() {
   const [newTask, setNewTask] = useState("");
 
-  const BASE_URL = "http://localhost:3000";
-
   const { data: tasksList, isLoading, isError, error } = useGetTasksQuery();
 
   const [addTask] = useAddTaskMutation();
-
   const [updateTask] = useUpdateTaskMutation();
-
-  const deleteTask = async (id) => {
-    await fetch(`${BASE_URL}/tasks/${id}`, {
-      method: "DELETE",
-    });
-  };
+  const [deleteTask] = useDeleteTaskMutation();
 
   return (
     <div className="flex h-screen flex-grow items-start justify-center bg-gray-900 p-4">

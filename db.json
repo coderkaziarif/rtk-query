@@ -1,11 +1,6 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "value": "Buy groceries",
-      "completed": false
-    },
-    {
       "id": "2",
       "value": "Walk the dog",
       "completed": true
@@ -31,18 +26,8 @@
       "completed": false
     },
     {
-      "id": "b762",
+      "id": "7db6",
       "value": "test",
-      "completed": false
-    },
-    {
-      "id": "3001",
-      "value": "hwww",
-      "completed": false
-    },
-    {
-      "id": "a496",
-      "value": "googogo",
       "completed": false
     }
   ]
